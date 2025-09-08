@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour{
-
+public class PlayerMovement : MonoBehaviour
+{
     Camera cam;
     public LayerMask groundMask;
     public PlayerAnimation playerAnimation;
-    
-    void Start(){
+
+    void Start()
+    {
         cam = Camera.main;
+        
+        // Check if PlayerAnimation is assigned
+        if (playerAnimation == null)
+        {
+            playerAnimation = GetComponent<PlayerAnimation>();
+            if (playerAnimation == null)
+            {
+                Debug.LogError("PlayerAnimation component not found! Please assign it in the Inspector or add it to this GameObject.");
+            }
+        }
     }
     
     void Update()
@@ -18,8 +29,6 @@ public class PlayerMovement : MonoBehaviour{
         // Using new Input System
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Debug.Log("Mouse clicked!"); // Test if this appears first
-            
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Ray ray = cam.ScreenPointToRay(mousePosition);
             RaycastHit hit;
@@ -27,16 +36,15 @@ public class PlayerMovement : MonoBehaviour{
             // Try raycast without layer mask first
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Hit object: " + hit.collider.name);
-
-            }
-            else
-            {
-                Debug.Log("No object hit by raycast");
+               if (playerAnimation != null)
+               {
+                   playerAnimation.MovetoPoint(hit.point);
+               }
+               else
+               {
+                   Debug.LogError("PlayerAnimation is null! Make sure it's assigned in the Inspector.");
+               }
             }
         }
     }
 }
-
-    
-
