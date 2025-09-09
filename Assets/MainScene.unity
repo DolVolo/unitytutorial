@@ -198,6 +198,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   rotationSpeed: 10
   anim: {fileID: 276687504}
+--- !u!4 &276687511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400066, guid: 1b7945602ded3ec43804b120aa9ed037, type: 3}
+  m_PrefabInstance: {fileID: 800622955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &340435537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1341006574788316, guid: 4c06d0e41c9ab87418af67603196c8e5, type: 3}
+  m_PrefabInstance: {fileID: 1244494941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &340435538 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4770313900666664, guid: 4c06d0e41c9ab87418af67603196c8e5, type: 3}
+  m_PrefabInstance: {fileID: 1244494941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &340435542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340435537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4edfec1e7368c4848a5cb42b406e270c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
+  radius: 0.5
+  player: {fileID: 276687511}
+  interactItem: {fileID: 340435538}
+  item: {fileID: 11400000, guid: e16f5ca8805fd4ce784fb285aad0f34d, type: 2}
 --- !u!1001 &558587771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,6 +313,7 @@ GameObject:
   - component: {fileID: 739064512}
   - component: {fileID: 739064511}
   - component: {fileID: 739064514}
+  - component: {fileID: 739064515}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -407,6 +439,26 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &739064515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739064510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6bbdc99b7bee457991dc81a24f43252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  target: {fileID: 276687511}
+  offset: {x: 2, y: 4, z: 4}
+  smoothSpeed: 0.125
+  currentZoom: 1
+  maxZoom: 3
+  minZoom: 0.3
+  yawSpeed: 100
+  zoomsensitive: 0.7
 --- !u!1001 &800622955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2924,6 +2976,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1301329202774256, guid: 4c06d0e41c9ab87418af67603196c8e5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1244494943}
+    - targetCorrespondingSourceObject: {fileID: 1341006574788316, guid: 4c06d0e41c9ab87418af67603196c8e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 340435542}
   m_SourcePrefab: {fileID: 100100000, guid: 4c06d0e41c9ab87418af67603196c8e5, type: 3}
 --- !u!1 &1244494942 stripped
 GameObject:

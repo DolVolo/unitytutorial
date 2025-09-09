@@ -44,7 +44,7 @@ public class PlayerAnimation : MonoBehaviour
             if (NavMesh.SamplePosition(point, out hit, 5.0f, NavMesh.AllAreas))
             {
                 agent.SetDestination(hit.position);
-                Debug.Log("Moving to: " + hit.position);
+                
             }
             else
             {

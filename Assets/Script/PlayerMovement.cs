@@ -40,10 +40,7 @@ public class PlayerMovement : MonoBehaviour
                {
                    playerAnimation.MovetoPoint(hit.point);
                }
-               else
-               {
-                   Debug.LogError("PlayerAnimation is null! Make sure it's assigned in the Inspector.");
-               }
+
             }
         }
     }
