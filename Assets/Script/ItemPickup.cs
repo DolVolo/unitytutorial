@@ -14,6 +14,7 @@ public class ItemPickup : InteractiveObject
 
     private void pickUp()
     {
+        Inventory.instance.Add(item);
         Destroy(gameObject);
     }
 }
