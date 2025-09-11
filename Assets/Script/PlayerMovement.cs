@@ -8,11 +8,21 @@ public class PlayerMovement : MonoBehaviour
     Camera cam;
     public LayerMask groundMask;
     public PlayerAnimation playerAnimation;
+    public GameObject inventoryUI;
+    public GameObject axe;
+    public bool showAxe = false;
+    public bool isAttack = false;
+    public static PlayerMovement instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
         cam = Camera.main;
-        
+
         // Check if PlayerAnimation is assigned
         if (playerAnimation == null)
         {
@@ -23,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    
+
     void Update()
     {
         // Using new Input System
@@ -32,16 +42,24 @@ public class PlayerMovement : MonoBehaviour
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Ray ray = cam.ScreenPointToRay(mousePosition);
             RaycastHit hit;
-            
+
             // Try raycast without layer mask first
             if (Physics.Raycast(ray, out hit))
             {
-               if (playerAnimation != null)
-               {
-                   playerAnimation.MovetoPoint(hit.point);
-               }
+                if (playerAnimation != null)
+                {
+                    if (!inventoryUI.activeSelf)
+                    {
+                        playerAnimation.MovetoPoint(hit.point);
+                    }
+                }
 
             }
         }
+    }
+    public void ShowAxe()
+    {
+        axe.SetActive(true);
+        showAxe = true;
     }
 }
